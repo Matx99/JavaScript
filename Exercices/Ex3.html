@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Exercice : définition de fonctions fléchées</title>
+		<meta charset="UTF-8">
+		<script>
+            var fonction1 = (x) => x+5;
+            var fonction2 = (x, y) => x+y;
+            var fonction0 = () => parseFloat(prompt("Saisissez un nombre"))+2;
+		</script>
+	</head>
+	<body>
+		<button onclick="console.log(fonction1(0))">Fonction avec un paramètre</button><br>
+		<button onclick="console.log(fonction2(0, 1))">Fonction avec deux paramètres</button><br>
+		<button onclick="console.log(fonction0())">Fonction sans paramètre</button>
+	</body>
+</html>

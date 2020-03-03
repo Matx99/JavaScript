@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Manipulation de vue</title>
+<script src="vue.js"></script>
+</head>
+<body>
+
+<div id="monapp">
+	<input type="number" v-model="nombre">
+	<p>nombre : {{ nombre }}</p>
+</div>
+<div id="radio">
+	<ul>
+		<li>Boutons radio:<br>
+			<label for="btnred">Rouge</label>
+			<input type="radio" name="rad" id="btnred" value="green" v-model="couleur">
+			<br>
+			<label for="btnblue">Bleu</label>
+			<input type="radio" name="rad" id="btnblue" value="blue" v-model="couleur">		
+		</li>
+		<li>Cases à cocher:<br>
+			<label for="cocaff">Voulez-vous afficher le paragraphe?</label>
+			<input type="checkbox" id="cocaff" v-model="affiche">
+		</li>
+	</ul>	
+	<p v-show='affiche' v-bind:style="'color:'+couleur">Paragraphe à afficher</p>
+</div>
+<div class="serif">
+	<select v-model="font">
+		<option>serif</option>
+		<option>sans-serif</option>
+		<option>monospace</option>
+		<option>cursive</option>
+		<option>fantasy</option>
+	</select>
+	<p v-bind:style="'font-family:'+font">Paragraphe dont la police va changer.</p>
+</div>
+<div id="exo12">
+	<label for="dizaines">dizaines</label>
+	<input type="number" id="dizaines" min="0" max="99" v-model="nombre.dizaines">
+	<label for="dizaines">unités</label>
+	<input type="number" id="unites" min="0" max="99" v-model="nombre.unites">
+	<p>Le nombre est : {{ newNumber }}</p>
+</div>
+<div id="exo12bis">
+	<label for="chpcode">Code&nbsp;:</label><input type="number" id="chpcode" min="0" max="7"><br>
+	<label for="read" lang="en">Read</label><input type="checkbox" id="read">
+	<label for="write" lang="en">Write</label><input type="checkbox" id="read">
+	<label for="execute" lang="en">Execute</label><input type="checkbox" id="read">
+	<p>À l'aide d'un accesseur et d'un mutateur, liez les deux parties du formulaire selon les codes numériques de la commande <kbd>chmod</kbd> (0=---, 1=--x, 2=-w-, 3=-wx, 4=r--, 5=r-x, 6=rw-, 7=rwx).</p>
+</div>
+
+
+<script>
+	let maVueModele = new Vue({
+		el: "#monapp",
+		data: {
+			nombre: 4
+			}
+	});
+	let maRadio = new Vue({
+		el: "#radio",
+		data: {
+				couleur: 'black',
+				affiche: true
+			}
+	});
+	let serif = new Vue({
+		el: ".serif",
+		data: {
+				font: 'serif'
+			}
+	});
+	let exo12 = new Vue({
+		el: "#exo12",
+		data: {
+			nombre: {
+				dizaines: dizaines.value.charAt(0), 
+				unites: unites.value.charAt(1)
+			}
+		},
+		computed: {
+    		newNumber: function() {
+      			return this.nombre.dizaines + this.nombre.unites; 
+    		}	    
+  		}
+	});
+	let exo12bis = new Vue({
+		el: "#exo12bis",
+		data: {
+			
+		},
+		computed: {
+    		    
+  		}
+	});
+</script>
+
+</body>
+</html>

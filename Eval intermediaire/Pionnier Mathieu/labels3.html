@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Labels</title>
+<meta charset="UTF-8">
+<style>
+	.bordure_noire{border:medium solid black}
+</style>
+<script>
+    function hidden() {
+        var inputNom = document.getElementById("chp_nom");
+        var inputPrenom = document.getElementById("chp_prenom");
+        var inputAdresse = document.getElementById("chp_adresse");
+        var labelNom = document.querySelector("label[for='chp_nom']");
+        var labelPrenom = document.querySelector("label[for='chp_prenom']");
+        var labelAdresse = document.querySelector("label[for='chp_adresse']");
+        
+        inputNom.addEventListener("focus", function(){
+            labelNom.removeChild(labelNom.childNodes[0]);
+            var node = document.createElement("strong");            
+            var textNode = document.createTextNode("Nom :");    
+            node.appendChild(textNode);   
+            labelNom.appendChild(node);      
+            labelPrenom.removeChild(labelPrenom.childNodes[0]);
+            labelAdresse.removeChild(labelAdresse.childNodes[0]);                   
+        });
+
+        inputPrenom.addEventListener("focus", function(){
+            labelPrenom.removeChild(labelPrenom.childNodes[0]);
+            var node = document.createElement("strong");            
+            var textNode = document.createTextNode("Prenom :");    
+            node.appendChild(textNode);   
+            labelPrenom.appendChild(node);  
+            labelNom.removeChild(labelNom.childNodes[0]);
+            labelAdresse.removeChild(labelAdresse.childNodes[0]);
+        });
+
+        inputAdresse.addEventListener("focus", function(){
+            labelAdresse.removeChild(labelAdresse.childNodes[0]);
+            var node = document.createElement("strong");            
+            var textNode = document.createTextNode("Adresse :");    
+            node.appendChild(textNode);   
+            labelAdresse.appendChild(node);
+            labelNom.removeChild(labelNom.childNodes[0]);
+            labelPrenom.removeChild(labelPrenom.childNodes[0]);  
+        });
+    }
+    window.onload=hidden;
+</script>
+</head>
+<body>
+
+<h1>Formulaire de test</h1>
+
+<form action="">
+	<p><label for="chp_nom">Nom&nbsp;:</label> <input type="text" id="chp_nom">&nbsp;
+	<label for="chp_prenom">Prénom&nbsp;:</label> <input type="text" id="chp_prenom"><br>
+	<label for="chp_adresse">Adresse&nbsp;:</label><br><textarea id="chp_adresse" rows="5" cols="30"></textarea></p>
+</form>
+
+</body>
+</html>

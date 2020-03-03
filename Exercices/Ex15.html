@@ -1,0 +1,28 @@
+<!-- http://www.licence.elec.upmc.fr/S_tec/coursEnLigne/dhtml3/exercices/exo18vide.html -->
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<title>Essai d'appel à un gestionnaire d'événement</title>
+<meta charset="UTF-8">
+<script>
+	function Init(){
+        span = document.getElementById('span1');
+        span.addEventListener("click", spanFonction, false);
+	}
+
+    function spanFonction(evenement){
+        this.style.backgroundColor="black";
+    }
+	
+</script>
+
+</head>
+<body onload="Init()">
+
+<div>
+	<p><span id="span1">Un petit texte</span>, et un paragraphe...</p>
+</div>
+
+</body>
+</html>

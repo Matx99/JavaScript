@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Manipulation JavaScript</title>
+
+<meta charset="UTF-8">
+<script>
+
+    function insereDate() {
+        var span = document.getElementById("zonedate");
+        span.removeChild(span.childNodes[0]);  
+        var dateauj = new Date();
+        span.textContent = dateauj;  
+    }
+
+</script>
+</head>
+<body>
+    <p>Nous sommes <span id="zonedate" onclick="insereDate()">aujourd'hui</span>.</p>
+</body>
+</html>

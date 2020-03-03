@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<title>Essai DHTML</title>
+<meta charset="UTF-8">
+<script>
+	
+	function ajout(){
+        liste = document.getElementById("listecommissions"); 
+        listeBis = document.createElement("li");
+        nouvelElement = document.createTextNode("bonjour");
+        listeBis.appendChild(nouvelElement);
+        liste.appendChild(listeBis);
+    }
+
+    function ajoutBis(){
+        liste = document.getElementById("listecommissions"); 
+        listeBis = document.createElement("li");
+        inputVal = document.getElementById("barre").value;
+        nouvelElement = document.createTextNode(inputVal);
+        listeBis.appendChild(nouvelElement);
+        liste.appendChild(listeBis);
+    }
+	
+    function suppression(){
+        // liste = document.getElementById("listecommissions"); 
+        // vari = liste.lastElementChild;
+        // console.log(vari);
+        // if (vari != null){
+        //  vari.remove(liste.length-1);
+        // }
+
+
+        // OU
+        if(liste.lastChild){
+            liste = document.getElementById("listecommissions"); 
+            if (liste.lastChild.nodeType==3){// si le dernier enfant du noeud est de type texte (retour chariot ici)
+                liste.removeChild(liste.lastChild)// on le supprime
+            }
+            if(liste.lastChild){// puis s'il reste un enfant du noeud
+                liste.removeChild(liste.lastChild); // on le supprime
+            }
+        }
+    }
+</script>
+
+</head>
+<body onclick="//ajout()">
+
+<ul id="listecommissions">
+	<li>1kg de farine</li>
+	<li>un pack de lait</li>
+</ul>
+<input type="text" id="barre"/>
+<button id="button" onclick="ajoutBis()">GO</button>
+<button id="buttonSuppression" onclick="suppression()">Supprimer</button>
+
+</body>
+</html>

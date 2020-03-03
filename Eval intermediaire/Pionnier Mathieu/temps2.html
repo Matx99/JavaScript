@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Manipulation JavaScript</title>
+
+<meta charset="UTF-8">
+<script>
+
+    function insereDate() {
+        var span = document.getElementById("zonedate");
+        var dateauj = new Date();
+        var options = {weekday:"long", year:"numeric", month:"long", day:"numeric" };  
+
+        dateauj = dateauj.toLocaleDateString("fr-FR", options);
+        span.textContent = dateauj;  
+    }
+
+</script>
+</head>
+<body>
+    <p>Nous sommes <span id="zonedate" onclick="insereDate()">aujourd'hui</span>.</p>
+</body>
+</html>
